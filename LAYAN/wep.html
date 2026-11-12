@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أجنحة الأثير - Wings Of The Ether</title>
+    <link rel="Icon" type="image/jpg" href="icoons.jpg">
+
+    <style>
+        /* CSS الأساسي وتنسيق الخلفية */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* استبدلي رابط الصورة بالخلفية الخاصة بكِ */
+            background: url('bac.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #1f2937;
+            padding-bottom: 40px;
+        }
+
+        /* الهيدر وزر تسجيل الدخول */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0284c7;
+        }
+
+        .btn-auth {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-auth:hover {
+            background-color: #0369a1;
+        }
+
+        /* حاوية المحتوى الرئيسية - الطبقة البيضاء الشفافة في الوسط */
+        .glass-container {
+            width: 85%;
+            max-width: 1100px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.75); /* طبقة بيضاء شفافة */
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* نموذج البحث عن الرحلات */
+        .search-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #4b5563;
+        }
+
+        .input-group select, .input-group input {
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-search {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-search:hover {
+            background-color: #0369a1;
+        }
+
+        /* قسم لماذا نختار أجنحة الأثير التفاعلي المصمم جديداً */
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: #0f172a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    /* أضيفي هذه السطور المسؤولة عن سلاسة الحركة */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* يرتفع الكارت للأعلى قليلاً */
+    box-shadow: 0 12px 25px rgba(2, 132, 199, 0.25); /* يتغير الظل ويصبح بلون أزرق خفيف */
+    border-color: #0284c7; /* يتلون الإطار بالأزرق */
+    cursor: pointer;
+}
+
+/* 2. تأثير التجاوب عند مرور السهم على خانات البحث واختيار المحطات */
+.input-group select, .input-group input {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    
+    /* أضيفي هذه السطور ليتفاعل الحقل مع الماوس */
+    transition: all 0.3s ease;
+}
+
+.input-group select:hover, .input-group input:hover, .input-group select:focus, .input-group input:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 10px rgba(2, 132, 199, 0.2);
+    cursor: pointer;
+}
+        
+
+        .feature-card h4 {
+            color: #0284c7;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* أسفل الصفحة - طبقة شفافة footer */
+        footer {
+            width: 85%;
+            max-width: 1100px;margin: 20px auto 0;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 20px;
+            border-radius: 18px;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        /* النوافذ المنبثقة (Modals) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 420px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .pay-option {
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .pay-option:hover {
+            border-color: #0284c7;
+            background-color: #f0f9ff;
+        }
+
+        /* تصميم التذكرة */
+        .ticket-box {
+            border: 2px dashed #0284c7;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8fafc;
+            margin-top: 15px;
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!— الهيدر —>
+    <header>
+        <div class="logo">أجنحة الأثير </div>
+        <button class="btn-auth" id="authBtn" onclick="openModal('loginModal')">تسجيل الدخول / حساب جديد</button>
+    </header>
+
+    <!— الطبقة البيضاء الشفافة بالوسط (تضم الحجز والمميزات) —>
+    <div class="glass-container">
+                     <div>
+                  
+                    <h1 style="text-align: center; font-size: 36px; color: #182e61; margin-bottom: 5px;">
+                        أجـنحـة الأثـــيـر     
+                    </h1>
+                    <p  style="text-align: center; margin-bottom: 30px;font-size: 16px; color: #0284c7;">
+                        تكنولوجيا المحاكاه الحيوية للطيران الفردي                    </p>
+                </div>
+        <!— حجز الرحلات —>
+        <div class="search-box">
+            <div class="input-group">
+                <label>من (محطة المغادرة)</label>
+                <select id="fromLoc">
+                    <option>الرياض (RUH)</option>
+                    <option>جدة (JED)</option>
+                    <option>الدمام (DMM)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>إلى (محطة الوصول)</label>
+                <select id="toLoc">
+                    <option>جدة (JED)</option>
+                    <option>الرياض (RUH)</option>
+                    <option>العلا (ULH)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>تاريخ المغادرة والعودة</label>
+                <input type="date" value="2026-11-20">
+            </div>
+            <button class="btn-search" onclick="startBooking()"> تـــــأكيد الـــحــجــز</button>
+        </div>
+
+        <!— لماذا نختار أجنحة الأثير —>
+        <h3 class="section-title">لماذا "أجنحة الأثير"؟</h3>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>وزن خفيف</h4>
+                <p>مرونة عالية وتجربة سفر مريحة تناسب تطلعاتك بكل سهولة.</p>
+            </div>
+            <div class="feature-card">
+                <h4>السفر بين المدن</h4>
+                <p>ربط مباشر بين أهم الوجهات بالمملكة بأعلى معايير الدقة.</p>
+            </div>
+            <div class="feature-card">
+                <h4>محطات توقف</h4>
+                <p>نقاط توقف ومحطات استراحة فاخرة مصممة لراحتك.</p>
+            </div>
+            <div class="feature-card">
+                <h4>نظام طي ذكي</h4><p>حلول مبتكرة لتسهيل تنقلك وحفظ أمتعتك بأمان.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!— فوتر أسفل الصفحة مع طبقة شفافة —>
+    <footer>
+        جميع الحقوق محفوظة © أجنحة الأثير - Wings Of The Ether 2026
+    </footer>
+
+    <!— نافذة تسجيل الدخول —>
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+            <h3 style="margin-bottom:15px; text-align:center;">تسجيل الدخول</h3>
+            <div class="input-group" style="margin-bottom: 12px;">
+                <label>الاسم</label>
+                <input type="text" id="userNameInput" placeholder="أدخل اسمك (مثال: أحمد)">
+            </div>
+            <div class="input-group" style="margin-bottom: 12px;">
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="userEmailInput" placeholder="example@email.com">
+            </div>
+            <div class="input-group" style="margin-bottom: 20px;">
+                <label>كلمة المرور</label>
+                <input type="password" id="userPassInput" placeholder="••••••••">
+            </div>
+            <button class="btn-search" style="width: 100%; margin-top: 0;" onclick="handleLogin()">دخول</button>
+        </div>
+    </div>
+
+    <!— نافذة الدفع —>
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('paymentModal')">&times;</span>
+            <h3 style="text-align:center;">اختيار طريقة الدفع</h3>
+            <p style="text-align:center; font-size: 14px; color: #64748b; margin-top: 5px;">المبلغ الإجمالي: 450 ر.س</p>
+            <div class="payment-options">
+                <div class="pay-option" onclick="confirmPayment('مدى')">💳 بطاقة مدى (Mada)</div>
+                <div class="pay-option" onclick="confirmPayment('فيزا / ماستركارد')">💳 Visa / MasterCard</div>
+                <div class="pay-option" onclick="confirmPayment('Apple Pay')">🍏 Apple Pay</div>
+            </div>
+        </div>
+    </div>
+
+    <!— نافذة التذكرة —>
+    <div class="modal" id="ticketModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('ticketModal')">&times;</span>
+            <h3 style="text-align:center; color:#0284c7;">🎉 تم تأكيد الحجز بنجاح!</h3>
+            <div class="ticket-box">
+                <div class="ticket-header">
+                    <span>تذكرة طيران</span>
+                    <span id="ticketPassenger"></span>
+                </div>
+                <p><strong>من:</strong> <span id="ticketFrom"></span></p>
+                <p><strong>إلى:</strong> <span id="ticketTo"></span></p>
+                <p><strong>طريقة الدفع:</strong> <span id="ticketPayMethod"></span></p>
+                <p><strong>حالة التذكرة:</strong> مؤكدة ✅</p>
+                <p><strong>رقم الحجز:</strong> #ETH-<script>document.write(Math.floor(100000 + Math.random() * 900000));</script></p>
+            </div>
+        </div>
+    </div>
+
+    <!— جافاسكريبت للتحكم بالوظائف والتفاعلات —>
+    <script>
+        let currentUser = "";
+
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // تسجيل الدخول
+        function handleLogin() {
+            const name = document.getElementById('userNameInput').value.trim();
+            const email = document.getElementById('userEmailInput').value.trim();
+            const pass = document.getElementById('userPassInput').value.trim();
+            if (name ==="" || email === "" || pass === "") {
+                alert("يرجى تعبئة جميع الحقول");
+            }
+            else if
+                (!email.includes("@") || !email.includes("."))
+            {
+                alert("الرجاء إدخال البريد الإلكتروني بصيغة صحيحة ")
+            }
+              
+             else {
+                  currentUser = name;
+                document.getElementById('authBtn').innerText = currentUser;
+                closeModal('loginModal');
+            }
+        }
+
+
+        // بدء عملية الحجز
+        function startBooking() {
+            openModal('paymentModal');
+        }
+
+        // تأكيد الدفع وعرض التذكرة
+        function confirmPayment(method) {
+            closeModal('paymentModal');
+            
+            // تعبئة بيانت التذكرة
+            document.getElementById('ticketFrom').innerText = document.getElementById('fromLoc').value;
+            document.getElementById('ticketTo').innerText = document.getElementById('toLoc').value;
+            document.getElementById('ticketPayMethod').innerText = method;
+
+            openModal('ticketModal');
+        }
+    </script>
+</body>
+</html>
